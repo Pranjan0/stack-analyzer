@@ -3,12 +3,14 @@ const bcrypt = require("bcrypt");
 const SALT = 10;
 
 const userSchema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: { type: String, required: true },
-  created_at: Date,
-  updated_at: Date,
+  name: { type: String },
+  email: { type: String},
+  password: { type: String},
+  age : {type : Number},
+  mobile : {type : Number}
+  // role: { type: String},
+  // created_at: Date,
+  // updated_at: Date,
 });
 
 userSchema.pre("save", function (next) {

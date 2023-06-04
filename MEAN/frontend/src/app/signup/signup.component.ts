@@ -1,6 +1,7 @@
 // signup.component.ts
 
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,14 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  user = {
-    name: '',
-    email: '',
-    password: ''
-  };
+  name = new FormControl();
+  email = new FormControl();
+  password = new FormControl();
 
   onSubmit() {
     // Handle the form submission logic here
-    console.log(this.user);
+    console.log(this.name);
   }
 }

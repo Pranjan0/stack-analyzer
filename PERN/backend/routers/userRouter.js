@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const Model = require("../models/userModel");
-const {getUsers, addUser}=require("../queries");
+const {getUsers, addUser}=require("./queries");
 
 router.get("/", (req, res) => {
   console.log("Request at user index");
