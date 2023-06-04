@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Model = require("../models/userModel");
 
+
 router.get("/", (req, res) => {
   console.log("Request at user index");
   res.status(299).send("UserRouter Working Perfectly!!");
