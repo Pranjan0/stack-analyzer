@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const { addProduct } = require('./product_queries');
+const { addProduct, getAllProduct } = require('./product_queries');
 
 router.post('/add', (req, res) => {
   console.log(req.body);
@@ -43,15 +43,7 @@ router.post('/auth', (req, res) => {
 });
 
 router.get('/getall', (req, res) => {
-  Model.find()
-    .then((result) => {
-      console.log('User Data Retrieved');
-      res.status(200).json({ status: 'success', result });
-    })
-    .catch((err) => {
-      console.error('Error retrieving user data', err);
-      res.status(500).send('Error retrieving user data');
-    });
+  getAllProduct(res);
 });
 
 router.get('/getbyid/:id', (req, res) => {

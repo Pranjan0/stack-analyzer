@@ -14,12 +14,6 @@ const productValidation = Yup.object().shape({
 
 const AddProduct = () => {
 
-  const addFirebaseData = async (formdata) => {
-    
-
-
-  }
-
   const productForm = useFormik({
     initialValues: {
       title: "",

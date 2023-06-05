@@ -6,19 +6,19 @@ const pool = new Pool({
     password: 'root',
     port: 7000,
 })
-const getAllProduct = async () => {
+const getAllProduct = async (res) => {
     try {
       const { rows } = await pool.query('SELECT * FROM product');
-      return rows;
+      res.status(200).json({ status: 'success', result: rows });
     } catch (error) {
       console.error(error);
-      return [];
+      res.status(500).json({ status: 'failed' });
     }
   };
 
   const addProduct = async ({title, category, price, created_at, image}, res) => {
     try {
-      await pool.query('INSERT INTO product (id, title, category, price, created_at, image) VALUES ($1, $2, $3, $4, $5, $6)', [1, title, category, price, created_at, image]);
+      await pool.query('INSERT INTO product (id, title, category, price, created_at, image) VALUES ($1, $2, $3, $4, $5, $6)', [2, title, category, price, created_at, image]);
       res.status(201).json({ status: 'success' });
     } catch (error) {
       console.error(error);
