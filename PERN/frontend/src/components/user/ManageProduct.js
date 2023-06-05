@@ -13,7 +13,7 @@ const ManageProduct = () => {
 
     useEffect(() => {
         getProductList();
-    }, [])
+    }, []);
     
 
   return (
