@@ -23,7 +23,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AddProductComponent,
+    ManageProductComponent
   ],
   imports: [
     BrowserModule,
