@@ -7,26 +7,32 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ManageProductComponent } from './manage-product/manage-product.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  // Add other routes as needed
+  { path: 'addproduct', component: AddProductComponent },
+  { path: 'manage', component: ManageProductComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
-    ComponentNameComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SweetAlert2Module.forRoot(),
   ],
   exports: [RouterModule],
   providers: [],
