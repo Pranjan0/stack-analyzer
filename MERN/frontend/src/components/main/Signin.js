@@ -17,7 +17,7 @@ const Signin = () => {
               'Content-Type':"application/json"
             }
           })
-          if(res.status===200){
+          if(res.status===201){
             Swal.fire({
               icon: 'success',
               title: 'Login Successful',
@@ -26,7 +26,7 @@ const Signin = () => {
             res.json().then(data=>{
               sessionStorage.setItem("user",JSON.stringify(data));
            });
-          }else if(res.status===400){
+          }else if(res.status===501){
             Swal.fire({
               icon: 'error',
               title: 'Login Failed',

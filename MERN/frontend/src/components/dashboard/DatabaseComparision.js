@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import app_config from '../../config';
+import Swal from 'sweetalert2';
 
 const DatabaseComparison = () => {
   const { apiurl } = app_config;
@@ -11,6 +12,19 @@ const DatabaseComparison = () => {
     console.log(data);
     setOperationList(data.result);
   };
+
+  const deleteOp = async (id) => {
+    const res = await fetch(apiurl+'/op/delete/'+id, {method : 'DELETE'});
+    console.log(res.status);
+
+    if(res.status === 200){
+      Swal.fire({
+        icon : 'success',
+        title: 'Operation Deleted!'
+      });
+      fetchOperationsData();
+    }
+  }
 
   useEffect(() => {
     fetchOperationsData();
@@ -25,6 +39,9 @@ const DatabaseComparison = () => {
           <td>{operation.time} seconds</td>
           <td>{operation.stack}</td>
           <td>{new Date(operation.created_at).toLocaleDateString()} - {new Date(operation.created_at).toLocaleTimeString()}</td>
+          <td>
+            <button className='btn btn-danger' onClick={e => deleteOp(operation._id)}>Delete</button>
+          </td>
         </tr>
       );
     });

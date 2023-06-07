@@ -44,12 +44,10 @@ const Footer = () => {
               {/* Content */}
               <h6 className="text-uppercase fw-bold mb-4">
                 <i className="fas fa-gem me-3" />
-                Company name
+                Stack Analyzer
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+                This Project has been developed to analyze and compare performances of different JavaScript Web Development stacks
               </p>
             </div>
             {/* Grid column */}
@@ -59,22 +57,22 @@ const Footer = () => {
               <h6 className="text-uppercase fw-bold mb-4">Products</h6>
               <p>
                 <a href="#!" className="text-reset">
-                  Angular
+                  MEAN
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  React
+                  MERN
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Vue
+                  PERN
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Laravel
+                  FERN
                 </a>
               </p>
             </div>
