@@ -45,19 +45,18 @@ const AddProduct = () => {
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-8 col-xl-6">
             <div className="card rounded-3">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
-                className="w-100"
-                style={{
-                  borderTopLeftRadius: ".3rem",
-                  borderTopRightRadius: ".3rem",
-                }}
-                alt="Sample photo"
-              />
+            <div
+            className="card-top p-5"
+            style={{
+              backgroundImage: `url('https://segwitz.com/wp-content/uploads/2021/09/why-ecommerce-need-mobile-apps.jpg')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              borderRadius: '4px 4px 0 0'
+            }}
+          >
+            <h2 className="text-white fw-bold">Add Product Data</h2>
+          </div>
               <div className="card-body p-4 p-md-5">
-                <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">
-                  Add Products
-                </h3>
                 <form className="px-md-2" onSubmit={productForm.handleSubmit}>
                   <div className="mb-4">
                     <label className="form-label" htmlFor="form3Example1q">

@@ -2,16 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 const Model = require("../models/operationModel");
+const { addOpData } = require("./operationController");
 
 router.post("/add", (req, res) => {
-  new Model(req.body)
-    .save()
+  addOpData(req.body)
     .then((result) => {
-      console.log("User Data Saved");
       res.status(201).json({ status: "success", result });
     })
     .catch((err) => {
-      console.error("Error saving user data", err);
+      console.error("Error saving operation data", err);
       res.status(500).send("Error saving user data");
     });
 });

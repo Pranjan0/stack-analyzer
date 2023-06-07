@@ -11,8 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'addproduct', component: AddProductComponent },
@@ -25,7 +27,8 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     AddProductComponent,
-    ManageProductComponent
+    ManageProductComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

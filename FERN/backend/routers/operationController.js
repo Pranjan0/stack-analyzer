@@ -1,10 +1,15 @@
+const { masterAPI } = require("../config");
 const Model = require("../models/operationModel");
 
 const addOpData = (data) => {
     return new Promise((resolve, reject) => {
-        const newData = new Model(data);
-        newData
-        .save()
+        fetch(masterAPI + "/op/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        })
         .then((result) => {
             console.log("Data Saved");
             resolve(result);

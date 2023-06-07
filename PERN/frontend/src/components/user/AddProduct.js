@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import React from "react";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
+import app_config from "../../config";
 
 const productValidation = Yup.object().shape({
   name: Yup.string()
@@ -10,6 +11,9 @@ const productValidation = Yup.object().shape({
     .required("Required"),
 });
 const AddProduct = () => {
+  
+  const { apiurl } = app_config;
+
   const productForm = useFormik({
     initialValues: {
       title: "",
@@ -20,7 +24,7 @@ const AddProduct = () => {
     },
     onSubmit: async (formdata) => {
       console.log(formdata);
-      const res = await fetch("http://localhost:5000/product/add", {
+      const res = await fetch(apiurl+"/product/add", {
         method: "POST",
         body: JSON.stringify(formdata),
         headers: {

@@ -1,77 +1,93 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ProductListing = () => {
+  const [productList, setProductList] = useState([]);
 
-    const [productList, setProductList] = useState([]);
-    
-    const fetchProducts = async () => {
-        const res = await fetch('http://localhost:5000/product/getall');
+  const fetchProducts = async () => {
+    const res = await fetch('http://localhost:5000/product/getall');
 
-        const {result} = await res.json();
-        console.log(result);
-        setProductList(result);
-    }
+    const { result } = await res.json();
+    console.log(result);
+    setProductList(result);
+  };
 
-    useEffect(() => {
-      fetchProducts();
-    }, [])
-    
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-    const displayProducts = () => {
-        return productList.map(product => (
-            <div className="col-lg-4 col-md-12 mb-4">
-        <div className="card">
-          <div
-            className="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-            data-mdb-ripple-color="light"
-          >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
-              className="w-100" alt=""
-            />
-            <a href="#!">
-              <div className="mask">
-                <div className="d-flex justify-content-start align-items-end h-100">
-                  <h5>
-                    <span className="badge bg-primary ms-2">New</span>
-                  </h5>
-                </div>
-              </div>
-              <div className="hover-overlay">
-                <div
-                  className="mask"
-                  style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-                />
-              </div>
-            </a>
+  const deleteProduct = async (id) => {
+    const res = await fetch(`http://localhost:5000/product/delete/${id}`, {
+      method: 'DELETE',
+    });
+
+    const { result } = await res.json();
+    console.log(result);
+    fetchProducts();
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Delete Product Successfull',
+    });
+  }
+
+  const displayProducts = () => {
+    return productList.map((product) => (
+      <tr>
+        <td>
+          <div className="d-flex align-items-center">
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style={{ width: '45px', height: '45px' }} className="rounded-circle" />
+            <div className="ms-3">
+              <p className="fw-bold mb-1">{product.title}</p>
+            </div>
           </div>
-          <div className="card-body">
-            <a href="" className="text-reset">
-              <h5 className="card-title mb-3">{product.title}</h5>
-            </a>
-            <a href="" className="text-reset">
-              <p>{product.category}</p>
-            </a>
-            <h6 className="mb-3">₹{product.price}</h6>
-          </div>
-        </div>
-      </div>
-        ))
-    }
+        </td>
+        <td>
+          <p className="fw-normal mb-1">₹ {product.price}</p>
+        </td>
+        <td>
+          <span className="badge badge-success rounded-pill d-inline">{product.category}</span>
+        </td>
+        <td>
+          <button type="button" className="btn btn-primary btn-sm btn-rounded">
+            {' '}
+            <i className="fas fa-edit    "></i> Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" className="btn btn-danger btn-sm btn-rounded" onClick={e => deleteProduct(product._id)}>
+            {' '}
+            <i className="fas fa-trash    "></i> Delete
+          </button>
+        </td>
+      </tr>
+    ));
+  };
 
   return (
-    <section style={{ backgroundColor: "#eee" }}>
-  <div className="text-center container py-5">
-    <h4 className="mt-4 mb-5">
-      <strong>Bestsellers</strong>
-    </h4>
-    <div className="row">
-      {displayProducts()}
-  </div>
-  </div>
-</section>
+    <div style={{ minHeight: '100vh', backgroundColor: '#8cc8ff' }}>
+      <header className="bg-dark">
+        <div className="container py-5">
+          <p className="display-4 fw-bold text-white">Manage Products</p>
+        </div>
+      </header>
+      <div className="container mt-5">
+        <table className="table align-middle mb-0 bg-white">
+          <thead className="bg-light">
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th className="text-center" colspan="2">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>{displayProducts()}</tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
 
-  )
-}
-
-export default ProductListing
+export default ProductListing;

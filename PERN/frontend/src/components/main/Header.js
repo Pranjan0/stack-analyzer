@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       {/* Container wrapper */}
-      <div className="container">
+      <div className="container-fluid">
         {/* Toggle button */}
         <button
           className="navbar-toggler"
@@ -22,12 +22,7 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           {/* Navbar brand */}
           <a className="navbar-brand mt-2 mt-lg-0" href="#">
-            <img
-              src="https://www.ptmim.org/wp-content/uploads/ptmim_images/WebStack/logo.png"
-              height={50} width={150}
-              alt="MDB Logo"
-              loading="lazy"
-            />
+            <h4>PERN Stack</h4>
           </a>
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -36,19 +31,16 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/main/aboutus">
-                AboutUs
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/main/contact">
-                Contact
-              </NavLink>
-            </li>
+           
+           
             <li className="nav-item">
               <NavLink className="nav-link" to="/user/addproduct">
-                Add Product
+                Add Products
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/user/productlisting">
+                Manage Products
               </NavLink>
             </li>
           </ul>
@@ -63,6 +55,7 @@ const Header = () => {
                 Signin
               </NavLink>
             </li>
+            
           </ul>
         </div>
       </div>

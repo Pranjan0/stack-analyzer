@@ -1,45 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const { addProduct, getAllProduct } = require('./product_queries');
+const { addProduct, getAllProduct, deleteProduct } = require('./product_queries');
 
 router.post('/add', (req, res) => {
   console.log(req.body);
   addProduct(req.body, res);
 
-});
-
-router.post('/auth', (req, res) => {
-  Model.findOne({ email: req.body.email })
-    .then((result) => {
-      if (result) {
-        new Model(result).comparePassword(req.body.password, (err, isMatch) => {
-          if (err || !isMatch) {
-            console.error('Error authenticating user', err);
-            res.status(500).send({ status: 'failed' });
-          } else {
-            console.log('User authenticated');
-            res.status(201).json({ status: 'success', result });
-          }
-        });
-      } else {
-        console.error('Error authenticating user');
-        res.status(501).json({ status: 'failed' });
-      }
-    })
-    .catch((err) => {
-      console.error('Error authenticating user', err);
-      res.status(502).json({ status: 'failed' });
-    });
-
-  // .then((result) => {
-  //   console.log("User Data Saved");
-  //   res.status(201).json({ status: "success", result });
-  // })
-  // .catch((err) => {
-  //   console.error("Error saving user data", err);
-  //   res.status(500).send("Error saving user data");
-  // });
 });
 
 router.get('/getall', (req, res) => {
@@ -71,15 +38,7 @@ router.put('/update/:id', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
-  Model.findByIdAndDelete(req.params.id)
-    .then((result) => {
-      console.log('User Data Deleted');
-      res.status(200).json({ status: 'success', result });
-    })
-    .catch((err) => {
-      console.error('Error deleting user data', err);
-      res.status(500).send('Error deleting user data');
-    });
+  deleteProduct(req.params.id, res);
 });
 
 module.exports = router;

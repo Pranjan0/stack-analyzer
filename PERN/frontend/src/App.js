@@ -16,6 +16,7 @@ import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
 import AddProduct from "./components/user/AddProduct";
 import ManageProduct from "./components/user/ManageProduct";
+import ProductListing from "./components/main/ProductListing";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -59,7 +60,7 @@ function App() {
             >
               <Route path="profile" element={<UserProfile />} />
               <Route path="addproduct" element={<AddProduct />} />
-              <Route path="manageproduct" element={<ManageProduct />} />
+              <Route path="productlisting" element={<ProductListing />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
