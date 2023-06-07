@@ -22,7 +22,7 @@ router.post("/add", (req, res) => {
     });
 });
 
-router.post("/auth", (req, res) => {
+router.post("/authenticate", (req, res) => {
   Model.findOne({ email: req.body.email })
     .then((result) => {
       if (result) {

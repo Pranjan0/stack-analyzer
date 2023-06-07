@@ -16,29 +16,6 @@ router.post("/add", (req, res) => {
     });
 });
 
-router.post("/auth", (req, res) => {
-  Model.findOne({ email: req.body.email })
-    .then((result) => {
-      if (result) {
-        new Model(result).comparePassword(req.body.password, (err, isMatch) => {
-          if (err || !isMatch) {
-            console.error("Error authenticating user", err);
-            res.status(500).send({status: "failed"});
-          } else {
-            console.log("User authenticated");
-            res.status(201).json({ status: "success", result });
-          }
-        });
-      } else {
-        console.error("Error authenticating user");
-        res.status(501).json({status: "failed"});
-      }
-    })
-    .catch((err) => {
-      console.error("Error authenticating user", err);
-      res.status(502).json({status: "failed"});
-    });
-});
 
 router.get("/getall", (req, res) => {
   Model.find()

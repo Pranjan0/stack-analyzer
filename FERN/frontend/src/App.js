@@ -55,7 +55,6 @@ function App() {
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
-              <Route element={<ProductListing />} path="productlisting" />
             </Route>
             <Route element={<Products />} path="products">
               <Route element={<AddProduct />} path="addproduct" />
@@ -72,6 +71,7 @@ function App() {
             >
               <Route path="profile" element={<UserProfile />} />
               <Route path="addproduct" element={<AddProduct />} />
+              <Route element={<ProductListing />} path="productlisting" />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

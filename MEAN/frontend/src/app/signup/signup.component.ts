@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
         icon: 'success',
         title: 'Success!!',
         text: 'You have successfully registered'
-      }).then((data: any) => {
+      }).then(data => {
         this.router.navigate(['/login']);
       })
     })

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { api_url } from 'src/config';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +12,6 @@ import Swal from 'sweetalert2';
 })
 export class AddProductComponent {
   productform: any;
-  url = 'http://localhost:5000';
   constructor(private http: HttpClient,private fb: FormBuilder, private router: Router) {}
   
   ngOnInit(): void {
@@ -50,6 +50,6 @@ export class AddProductComponent {
   }
 
   addProduct(userdata: any) {
-    return this.http.post(this.url + '/product/add', userdata);
+    return this.http.post(api_url + '/product/add', userdata);
   }
 }

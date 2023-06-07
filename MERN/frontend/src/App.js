@@ -2,18 +2,13 @@ import "./App.css";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "./components/admin";
 import Main from "./components/main";
-import Products from "./components/products";
 import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
 import Home from "./components/main/Home";
-import Product from "./components/products/Product";
-import Rating from "./components/products/Rating";
-import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
 import UserProfile from "./components/user/UserProfile";
 import AdminProfile from "./components/admin/AdminProfile";
 import NotFound from "./components/NotFound";
-import AdminAuth from "./auth/AdminAuth";
 import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
@@ -55,13 +50,8 @@ function App() {
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
-              <Route element={<ProductListing />} path="productlisting" />
             </Route>
-            <Route element={<Products />} path="products">
-              <Route element={<AddProduct />} path="addproduct" />
-              <Route element={<Rating />} path="rating" />
-            </Route>
-
+           
             <Route
               element={
                 // <UserAuth>
@@ -72,6 +62,7 @@ function App() {
             >
               <Route path="profile" element={<UserProfile />} />
               <Route path="addproduct" element={<AddProduct />} />
+                <Route path="productlisting" element={<ProductListing />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
